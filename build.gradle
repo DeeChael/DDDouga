@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'net.deechael'
+version '1.00.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.jetbrains:annotations:23.0.0' // Annotation
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0' // Network
+    implementation 'io.netty:netty-all:4.1.79.Final' // Network
+    implementation 'com.google.guava:guava:31.1-jre' // Common
+    implementation 'commons-lang:commons-lang:2.6' // Common
+    implementation 'com.google.code.gson:gson:2.9.0' // Json Parser
+    implementation 'org.yaml:snakeyaml:1.30' // Yaml Parser
+    implementation 'org.xerial:sqlite-jdbc:3.36.0.3' // Sqlite JDBC
+    implementation 'com.formdev:flatlaf:2.3' // IntelliJ Style LookAndFeel
+    implementation 'com.formdev:flatlaf-swingx:2.3' // Extension of FlatLaf
+    implementation 'org.jsoup:jsoup:1.15.2' // HTML Parser
+    implementation 'us.codecraft:xsoup:0.3.4' // XPath Selector
+    implementation 'org.mozilla:rhino:1.7.14' // JavaScript Applier
+    implementation 'net.sourceforge.htmlunit:htmlunit:2.63.0' // HTML & JavaScript Applier
+    implementation 'uk.co.caprica:vlcj:4.7.3' // Video Player
+    implementation 'org.slf4j:slf4j-nop:1.7.36' // Logger
+}
