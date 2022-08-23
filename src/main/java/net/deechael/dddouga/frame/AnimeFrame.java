@@ -1,20 +1,22 @@
 package net.deechael.dddouga.frame;
 
+import net.deechael.dddouga.DDDouga;
 import net.deechael.dddouga.item.Channel;
 import net.deechael.dddouga.item.Douga;
 import net.deechael.dddouga.utils.FrameUtils;
-import net.deechael.dddouga.utils.T80Utils;
+import org.slf4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.awt.event.WindowAdapter;
 import java.util.List;
 
 public class AnimeFrame extends JFrame {
 
     public AnimeFrame(Douga item) {
+        Logger logger = DDDouga.getLogger();
+        logger.debug("Building the anime detail frame");
         this.setTitle(item.getName());
         this.setMinimumSize(new Dimension(800, 600));
         this.setSize(new Dimension(800, 600));
@@ -22,7 +24,7 @@ public class AnimeFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLayout(null);
         this.setVisible(true);
-        List<Channel> channels = T80Utils.getEpisodes(item);
+        List<? extends Channel> channels = DDDouga.getCurrentProvider().listEpisodes(item);
         JPanel panel = new JPanel();
         //panel.setSize(this.getWidth() - 16, this.getHeight() - 40);
         panel.setVisible(true);

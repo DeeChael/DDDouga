@@ -25,5 +25,6 @@ dependencies {
     implementation 'org.mozilla:rhino:1.7.14' // JavaScript Applier
     implementation 'net.sourceforge.htmlunit:htmlunit:2.63.0' // HTML & JavaScript Applier
     implementation 'uk.co.caprica:vlcj:4.7.3' // Video Player
-    implementation 'org.slf4j:slf4j-nop:1.7.36' // Logger
+    implementation 'ch.qos.logback:logback-classic:1.2.11' // Logger
+    implementation 'net.sf.jopt-simple:jopt-simple:5.0.4' // Command Line
 }

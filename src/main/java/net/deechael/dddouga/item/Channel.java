@@ -5,28 +5,13 @@ import java.util.List;
 /**
  * A.K.A. Video Source
  */
-public class Channel {
+public interface Channel {
 
-    private final String name;
-    private final int index;
-    private List<Episode> episodes;
+    String getName();
 
-    public Channel(String name, int index, List<Episode> episodes) {
-        this.name = name;
-        this.index = index;
-        this.episodes = episodes;
-    }
+    int getIndex();
 
-    public String getName() {
-        return name;
-    }
+    List<? extends Episode> getEpisodes();
 
-    public int getIndex() {
-        return index;
-    }
-
-    public List<Episode> getEpisodes() {
-        return episodes;
-    }
 
 }

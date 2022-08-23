@@ -1,8 +1,9 @@
 package net.deechael.dddouga.frame;
 
+import net.deechael.dddouga.DDDouga;
 import net.deechael.dddouga.item.Douga;
 import net.deechael.dddouga.utils.FrameUtils;
-import net.deechael.dddouga.utils.T80Utils;
+import org.slf4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,6 +30,8 @@ public final class MainFrame {
     private Thread thread;
 
     public MainFrame() {
+        Logger logger = DDDouga.getLogger();
+        logger.debug("Building main frame");
         frame.setMinimumSize(new Dimension(800, 600));
         frame.setSize(new Dimension(800, 600));
         frame.setLocation(FrameUtils.center(frame.getSize()));
@@ -144,8 +147,10 @@ public final class MainFrame {
         if (thread != null) {
             thread.interrupt();
         }
+        Logger logger = DDDouga.getLogger();
+        logger.debug("Reloading the dougas in Main Frame");
         updatePage();
-        List<Douga> dougas = T80Utils.getPage(page);
+        List<? extends Douga> dougas = DDDouga.getCurrentProvider().list(page);
         this.currentDougaAmount = dougas.size();
         mainPanel();
         List<JDougaItem> dougaItems = new ArrayList<>();
@@ -159,7 +164,9 @@ public final class MainFrame {
             for (JDougaItem dougaItem : dougaItems) {
                 dougaItem.refreshIcon();
             }
+            logger.debug("All images were refreshed successfully");
         });
+        logger.debug("Starting freshing douga images");
         thread.start();
     }
 
